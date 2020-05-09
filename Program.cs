@@ -22,5 +22,7 @@ namespace testAPI
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+                private const string menuApiUrl = "https://ncte.org/wp-json/menus/v1/menus/global-menu";
     }
 }

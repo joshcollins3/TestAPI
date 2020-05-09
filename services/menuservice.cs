@@ -9,8 +9,9 @@ namespace testAPI.services
 {
    
     public class MenuService{
-        public static bool Update() {
-            return true;
+        public static async Task<string> Update() {
+            var updateGM = await proxy.MenuProxy.GetMenu("https://ncte.org/wp-json/menus/v1/menus/global-menu");
+            return updateGM.ToString();
         }
     }
 

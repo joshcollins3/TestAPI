@@ -12,10 +12,12 @@ namespace testAPI.Controllers
     public class TestController : ControllerBase
     {
 
-        [HttpPost("UpdateMenu")]
-        public ActionResult UpdateMenu()
+        [HttpPost("update")]
+        public async Task<ActionResult> UpdateMenu()
         {
-            string return = services.MenuService.UpdateMenu;
+            var updated = await services.MenuService.Update();
+            
+          return Ok(updated);
             }
 
     }

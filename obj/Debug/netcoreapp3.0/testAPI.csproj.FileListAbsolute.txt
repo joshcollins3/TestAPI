@@ -16,3 +16,5 @@ C:\Users\legox\Desktop\Projects\testAPI\obj\Debug\netcoreapp3.0\testAPI.Assembly
 C:\Users\legox\Desktop\Projects\testAPI\obj\Debug\netcoreapp3.0\testAPI.RazorTargetAssemblyInfo.cache
 C:\Users\legox\Desktop\Projects\testAPI\obj\Debug\netcoreapp3.0\testAPI.dll
 C:\Users\legox\Desktop\Projects\testAPI\obj\Debug\netcoreapp3.0\testAPI.pdb
+C:\Users\legox\Desktop\Projects\testAPI\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+C:\Users\legox\Desktop\Projects\testAPI\obj\Debug\netcoreapp3.0\testAPI.csproj.CopyComplete
