@@ -12,7 +12,7 @@ namespace testAPI.proxy
 {
   
     public class MenuProxy{
-         public static async Task<IEnumerable<MenuItem>> GetMenu(string apiUrl){
+         public async Task<IEnumerable<MenuItem>> GetMenu(string apiUrl){
            var fullMenu = new List<MenuItem>();
            using(System.Net.Http.HttpClient client = new HttpClient()){
                var response = await client.GetStringAsync(apiUrl);
@@ -29,7 +29,7 @@ namespace testAPI.proxy
            return fullMenu;
        }
 
-       private static MenuItem loadMenuItem(JObject item){
+       private MenuItem loadMenuItem(JObject item){
            var m = new MenuItem();
            m.ExternalId = int.Parse(item["ID"].ToString());
            m.Url = item["url"].ToString();

@@ -57,15 +57,17 @@ namespace testAPI.repositories
             return id;
         }
         private const string menuApiUrl = "https://ncte.org/wp-json/menus/v1/menus/global-menu";
-        private static repositories.MenuRepository repo = null;
-        public static void UpdateMenu() {
+        private repositories.MenuRepository repo = null;
+        public void UpdateMenu() {
             Console.WriteLine("Enter SQL Password");
             string password = Console.ReadLine();
 
             string connectionString = $"Server=10.0.0.9;Database=NCTEv2;User Id=sa;Password={password}";
 
             Console.WriteLine("Getting Menu");
-            var menu = proxy.MenuProxy.GetMenu(menuApiUrl).GetAwaiter().GetResult();
+            proxy.MenuProxy proxy = new proxy.MenuProxy();
+
+            var menu = proxy.GetMenu(menuApiUrl).GetAwaiter().GetResult();
 
             using(System.Data.SqlClient.SqlConnection connection = new System.Data.SqlClient.SqlConnection(connectionString))
             using(System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand("TRUNCATE TABLE MENU", connection)){
@@ -75,7 +77,7 @@ namespace testAPI.repositories
                 
                 insertMenu(menu);
         }
-        static void insertMenu(IEnumerable<model.MenuItem> menu, int? parentMenuId = null)
+         void insertMenu(IEnumerable<model.MenuItem> menu, int? parentMenuId = null)
         {
             int id = 0;
             

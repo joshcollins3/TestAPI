@@ -15,7 +15,9 @@ namespace testAPI.Controllers
         [HttpPost("update")]
         public async Task<ActionResult> UpdateMenu()
         {
-            var updated = await services.MenuService.Update();
+          services.MenuService service = new services.MenuService();
+
+            var updated = await service.Update();
             
           return Ok(updated);
             }

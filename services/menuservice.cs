@@ -10,9 +10,12 @@ namespace testAPI.services
    
     public class MenuService{
         private const string menuApiUrl = "https://ncte.org/wp-json/menus/v1/menus/global-menu";
-        public static async Task<IEnumerable<model.MenuItem>> Update() {
-            var updateGM = await proxy.MenuProxy.GetMenu(menuApiUrl);
-            repositories.MenuRepository.UpdateMenu();
+        public async Task<IEnumerable<model.MenuItem>> Update() {
+            proxy.MenuProxy proxy = new proxy.MenuProxy();
+            var updateGM = await proxy.GetMenu(menuApiUrl);
+
+            repositories.MenuRepository repo = new repositories.MenuRepository();
+            repo.UpdateMenu();
             return updateGM;
         }
     }
