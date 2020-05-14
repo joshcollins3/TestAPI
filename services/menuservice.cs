@@ -14,7 +14,7 @@ namespace testAPI.services
             proxy.MenuProxy proxy = new proxy.MenuProxy();
             var updateGM = await proxy.GetMenu(menuApiUrl);
 
-            repositories.MenuRepository repo = new repositories.MenuRepository();
+            repositories.MenuRepository repo = new repositories.MenuRepository(new System.Data.SqlClient.SqlConnection());
             repo.UpdateMenu();
             return updateGM;
         }

@@ -60,7 +60,7 @@ namespace testAPI.repositories
         private repositories.MenuRepository repo = null;
         public void UpdateMenu() {
             Console.WriteLine("Enter SQL Password");
-            string password = Console.ReadLine();
+            string password = "";
 
             string connectionString = $"Server=10.0.0.9;Database=NCTEv2;User Id=sa;Password={password}";
 
