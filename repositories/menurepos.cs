@@ -8,12 +8,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
+using System.Configuration;
+using System.Collections.Specialized;
+
 
 namespace testAPI.repositories
 {
     
     public class MenuRepository
     {
+        private readonly IConfiguration Configuration;
+
+    public MenuRepository(IConfiguration configuration)
+    {
+        Configuration = configuration;
+    }
+
         private SqlConnection connection = null;
         public MenuRepository(SqlConnection connection){
             this.connection = connection;
@@ -58,11 +69,15 @@ namespace testAPI.repositories
         }
         private const string menuApiUrl = "https://ncte.org/wp-json/menus/v1/menus/global-menu";
         private repositories.MenuRepository repo = null;
+
+        
         public void UpdateMenu() {
             Console.WriteLine("Enter SQL Password");
-            string password = "";
 
-            string connectionString = $"Server=10.0.0.9;Database=NCTEv2;User Id=sa;Password={password}";
+            var config = new configurations.Config();
+            Configuration.GetSection("PasswordConfig").Bind(config);
+
+            string connectionString = $"Server=10.0.0.9;Database=NCTEv2;User Id=sa;Password={config}";
 
             Console.WriteLine("Getting Menu");
             proxy.MenuProxy proxy = new proxy.MenuProxy();
